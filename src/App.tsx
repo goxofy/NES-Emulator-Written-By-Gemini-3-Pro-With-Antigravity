@@ -74,7 +74,7 @@ function App() {
 
           <div className="controls-card" style={{ marginTop: '20px' }}>
             <h3>Cartridge</h3>
-            <RomLoader onRomLoaded={handleRomLoaded} compact={romLoaded} />
+            <RomLoader onRomLoaded={handleRomLoaded} />
           </div>
         </div>
 
