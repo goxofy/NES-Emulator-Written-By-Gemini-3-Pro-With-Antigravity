@@ -1,3 +1,6 @@
+<img width="3276" height="1762" alt="CleanShot 2025-11-19 at 23 07 00@2x" src="https://github.com/user-attachments/assets/0b5c0a5f-b057-47a1-924c-ba8a6d77f639" />
+
+
 # React NES Emulator (Web版红白机模拟器)
 
 这是一个基于 React、TypeScript 和 Vite 构建的 Web 版 NES (FC) 模拟器。核心使用 `jsnes` 库，并在此基础上进行了大量的 UI/UX 优化和性能改进。
