@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+# React NES Emulator (Web版红白机模拟器)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+这是一个基于 React、TypeScript 和 Vite 构建的 Web 版 NES (FC) 模拟器。核心使用 `jsnes` 库，并在此基础上进行了大量的 UI/UX 优化和性能改进。
 
-Currently, two official plugins are available:
+## ✨ 功能特点
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **高性能游戏循环**: 采用基于时间的渲染循环，确保在各种刷新率的屏幕上都能稳定保持 60 FPS，拒绝“慢动作”或“快进”。
+*   **Web Audio 音效**: 使用 `ScriptProcessorNode` 实现音频缓冲和播放，完美还原游戏背景音乐和音效。
+*   **复古街机 UI**: 采用“街机柜”风格的布局，屏幕比例强制锁定 4:3，还原真实显示效果。
+*   **人性化控制**: 
+    *   支持键盘操作，键位经过优化（WASD + J/K）。
+    *   **连发功能 (Turbo)**: 专为射击游戏设计，轻松实现火力全开。
+    *   **防误触**: 智能屏蔽方向键滚动网页，提供沉浸式体验。
+*   **ROM 加载**: 支持拖拽或点击加载 `.nes` 游戏文件。
+*   **硬重置**: 真实的“重置”按钮，重新加载 ROM 数据，防止游戏卡死。
 
-## React Compiler
+## 🎮 操作说明
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| 动作 | 按键 | 说明 |
+| :--- | :--- | :--- |
+| **移动** | **W / A / S / D** | 上 / 左 / 下 / 右 |
+| **A 键** | **K** | 跳跃 / 确认 |
+| **B 键** | **J** | 攻击 / 取消 |
+| **连发 A** | **I** | 自动连按 A 键 |
+| **连发 B** | **U** | 自动连按 B 键 |
+| **选择** | **Shift** | Select 键 |
+| **开始** | **Enter** | Start 键 |
 
-## Expanding the ESLint configuration
+## 🚀 快速开始
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1.  **安装依赖**:
+    ```bash
+    npm install
+    ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2.  **启动开发服务器**:
+    ```bash
+    npm run dev
+    ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3.  **构建生产版本**:
+    ```bash
+    npm run build
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ 技术栈
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+*   [React](https://reactjs.org/)
+*   [TypeScript](https://www.typescriptlang.org/)
+*   [Vite](https://vitejs.dev/)
+*   [jsnes](https://github.com/bfirsh/jsnes) (模拟器核心)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📝 待办事项 / 计划
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- [ ] 🎮 手柄支持 (Gamepad API)
+- [ ] 💾 存档/读档功能
+- [ ] 📱 移动端触摸控制
+- [ ] 📚 最近玩过的游戏列表
+
+---
+
+Enjoy the nostalgia! 🕹️
